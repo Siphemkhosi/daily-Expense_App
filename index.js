@@ -11,7 +11,7 @@ app.use(express.json());
 const pgp = require("pg-promise")();
 
 const DATABASE_URL =
-  process.env.DATABASE_URL || "postgresql://siphe:codex123@localhost:5432/dailyexpenses";
+  process.env.DATABASE_URL || "postgresql://postgres:codex123@localhost:5432/dailyexpenses";
 
 const config = {
   connectionString: DATABASE_URL,
@@ -54,3 +54,4 @@ app.use(session({
   const Expenseapp = Expenses(db);
   const expenseroutes = ExpenseRoutes(Expenseapp);
   app.get("/", expenseroutes.home);
+  app.post("/expense", expenseroutes.dailyExpense);

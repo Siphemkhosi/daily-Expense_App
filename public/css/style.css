@@ -6,14 +6,22 @@
   input{
     margin-bottom: 20px;
     margin-top: 30px;
+   
+  }
+  .expense_list{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
   }
 
-  button{
-    margin-top: 10px;
-  }
+  input{
 
+    color:pink;
+
+ 
+  }
   body {
-    background: white;
+    background: pink;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -21,22 +29,39 @@
     flex-wrap: wrap;
   }
  
-.name{
+button{
+  padding: 10px;
+  background-color: blue;
+  text-align: center;
+  justify-self: start;
+}
+
+/* .name{
   font-weight: 500;
   font-size: larger;
+} */
+.items{
+  margin-left: 88px;
+}
+.namedates{
+  margin-left: 86px;
+}
+.nameamaounts{
+  margin-left: 64px;
 }
   .options{
     padding-left: 80px;
     align-items: flex-start;
+    margin-left: 60px;
   }
 .inputname{
+  margin-left: 66px;
+  color: pink;
+  
+}
+.details{
   margin-left: 30px;
 }
-  .price_plans{
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-  }
-  select{
-    margin-left:10px ;
-  }
+.mails{
+  margin-left: 94px;
+}

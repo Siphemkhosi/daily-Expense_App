@@ -41,38 +41,56 @@
 {{/if}}
 
 {{!-- username input --}}
-  <label class="name" for="Name"><b>Username</b></label>
+<div class="sign-in"   style="background-color: pink;" >
+  <div class="us">
+  <label class="name" ><b>Username</b></label>
         <input
           class="inputname"
           id="input"
           type="text"
-          name="name"
+          name="username"
           placeholder="enter your name"
         />
-
-
-     <label class="name" for="Name"><b>Contact Details</b></label>
+</div>
+  <div class="de">
+     <label class="detail" ><b>Contact Details</b></label>
         <input
-          class="inputname"
+          class="details"
           id="input"
           type="text"
           name="details"
           placeholder="enter number"
         />
-  
-    <label class="name" for="Name"><b> Email</b></label>
+  </div>
+  <div class="de">
+    <label class="mail" ><b> Email</b></label>
         <input
-          class="inputname"
+          class="mails"
           id="input"
           type="text"
           name="mail"
           placeholder="enter Email"
         />
+        </div>
+        </div>
          <br>
-  <div class="price_plans">
-   
-      <h4>Items</h4>
-       <span> <select  class="options"  name="priceplan_id"> 
+         <hr>
+         <br>
+
+
+    <div>
+     <label class="item" for="Name"><b>Item</b></label>
+        <input
+          class="items"
+          id="item"
+          type="text"
+          name="item1"
+          placeholder="enter your name"
+        />
+</div>
+  <div class="expense_list">
+      <h4>Category</h4>
+       <span> <select  class="options"  name="description1"> 
         <option> </option> 
          <option value="1" >Food</option> 
          <option value="2" >Communication</option>
@@ -81,23 +99,26 @@
        </select>
       </div>
 
-        <label class="name" for="Name"><b>Amount</b></label>
+<div>
+        <label class="nameamaount" ><b>Amount</b></label>
         <input
-          class="inputname"
+          class="nameamaounts"
           id="input"
           type="text"
           name="amount"
           placeholder="enter your name"
         />
-
-          <label class="name" for="Name"><b>Dete</b></label>
+</div>
+<div>
+          <label class="namedate" ><b>Date</b></label>
         <input
-          class="inputname"
+          class="namedates"
           id="input"
           type="text"
           name="date"
           placeholder="enter your name"
         />
+        </div>
          <button type="submit" class="submit" >submit</button>
     
     </form>
