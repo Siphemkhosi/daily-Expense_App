@@ -7,11 +7,17 @@ const Expenses = require("./expense");
 const ExpenseRoutes = require("./expenseRoutes");
 const app = express();
 
+
+const uid = new ShortUniqueId({ length: 10 });
+uid(); // p0ZoB1FwH6
+uid(); // mSjGCTfn8w
+uid(); // yt4Xx5nHM
+
 app.use(express.json());
 const pgp = require("pg-promise")();
 
 const DATABASE_URL =
-  process.env.DATABASE_URL || "postgresql://coder:codex123@localhost:5432/dailyexpenses";
+  process.env.DATABASE_URL || "postgresql://postgres:codex123@localhost:5432/dailyexpenses";
 
 const config = {
   connectionString: DATABASE_URL,

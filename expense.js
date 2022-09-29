@@ -1,41 +1,38 @@
 module.exports = function Expenses(db) {
-    async function setUserInfo(name, contact, email){
+    async function setUserInfo(descriptions_id, amount, date, item, user_data){
         try{
-      const user = await db.manyOrNone(`SELECT * FROM users WHERE  username = $1 `,  [name]);
- 
+      const user = await db.manyOrNone(`SELECT * FROM users WHERE  username = $1 AND contact = $2 AND email = $3 `,  [user_data.name, user_data.contact, user_data.email]);
+
       if(user.length === 0){
        
          await db.none(`INSERT INTO users (username, contact, email )
-         VALUES ($1, $2, $3)`, [name, contact, email])
-    
+         VALUES ($1, $2, $3)`, [user_data.name, user_data.contact, user_data.email])
+         
+   
        }
-    
-    
+       const username_id = await db.manyOrNone(`SELECT id FROM users WHERE  username = $1 AND contact = $2 AND email = $3 `,  [user_data.name, user_data.contact, user_data.email]);
+         console.log(username_id[0]?.id);  
+       
+           await db.none(`INSERT INTO expenses (username_id, descriptions_id, amount, dates, item_name)
+           VALUES ($1, $2, $3, $4, $5)`, [username_id[0]?.id, descriptions_id, amount, date, item])
+       
+  
     } catch (err) {
             console.error(err.message);
           }
 
 }
 
-async function userExpenses(descriptions_id, amount, date, item){
-  console.log(descriptions_id);
+async function userExpenses( descriptions_id, amount, date, item, user_data){
+
 try{
-  // await db.oneOrNone(`SELECT * FROM expenses WHERE  username_id = $1`,  [username_id]  );
-  await db.oneOrNone(`SELECT * FROM expenses WHERE  descriptions_id = $1`,  [ descriptions_id]);
-  const theItem =  await db.manyOrNone(`SELECT * FROM expenses WHERE  item_name = $1`,  [item]);
+  
+  // const username_id = await db.manyOrNone(`SELECT id FROM users WHERE  username = $1 AND contact = $2 AND email = $3 `,  [user_data.name, user_data.contact, user_data.email]);
+  // console.log(2);  
 
-  if(theItem){
-   
-    // await db.none(`INSERT INTO expenses (username_id)
-    // SELECT (username) FROM users VALUES ($1)`, [username_id])
+  //   await db.none(`INSERT INTO expenses (username_id, descriptions_id, amount, dates, item_name)
+  //   VALUES ($1, $2, $3, $4, $5)`, [username_id, descriptions_id, amount, date, item])
 
-    await db.none(`INSERT INTO expenses (descriptions_id)
-    SELECT (descriptions) FROM categories `)
-   
-
-    await db.none(`INSERT INTO expenses ( amount, dates, item_name)
-    VALUES ($1, $2, $3)`, [amount, date, item])
-  }
 
 } catch (err) {
             console.error(err.message);
