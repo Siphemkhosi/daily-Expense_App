@@ -13,8 +13,8 @@ descriptions  VARCHAR(100) not Null
 
 CREATE TABLE expenses(
 id SERIAL not Null  PRIMARY KEY,
-username_id int not Null,
-descriptions_id int not Null,
+username_id int,
+descriptions_id int,
 Amount  decimal not Null,
 Dates DATE,
 item_name VARCHAR(100) not Null,

@@ -15,7 +15,7 @@ async function dailyExpense(req, res, next){
   
 
   try{
-    let username_id = req.body.username;
+    // let username_id = req.body.username;
     let descriptions_id = req.body.description1;
     let name = req.body.username;
     let contact = req.body.details;
@@ -29,7 +29,7 @@ async function dailyExpense(req, res, next){
   }
 
   if(item){
-    Expenses.userExpenses( username_id, descriptions_id, amount, date, item)
+    Expenses.userExpenses( descriptions_id, amount, date, item)
     // console.log("mon" + item)
   }
   res.redirect("/");
