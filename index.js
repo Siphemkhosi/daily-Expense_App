@@ -4,14 +4,11 @@ const bodyParser = require('body-parser');
 // const flash = require('express-flash');
 const session = require('express-session');
 const Expenses = require("./expense");
+const Joined = require("./userExpense")
 const ExpenseRoutes = require("./expenseRoutes");
 const app = express();
 
 
-const uid = new ShortUniqueId({ length: 10 });
-uid(); // p0ZoB1FwH6
-uid(); // mSjGCTfn8w
-uid(); // yt4Xx5nHM
 
 app.use(express.json());
 const pgp = require("pg-promise")();
@@ -58,6 +55,8 @@ app.use(session({
   console.log(`listen to server: http://localhost:${port}`);
   
   const Expenseapp = Expenses(db);
+  const joined = Joined(db);
   const expenseroutes = ExpenseRoutes(Expenseapp);
   app.get("/", expenseroutes.home);
   app.post("/expense", expenseroutes.dailyExpense);
+  app.get("/userExpense", expenseroutes.getExpense);

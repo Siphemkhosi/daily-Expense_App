@@ -1,4 +1,4 @@
-module.exports = function ExpenseRoutes(Expenses) {
+module.exports = function ExpenseRoutes(Expenses, Joined) {
     async function home(req, res, next) {
   
         try {
@@ -32,10 +32,10 @@ async function dailyExpense(req, res, next){
     Expenses.setUserInfo(descriptions_id, amount, date, item, userData)
   }
 
-  if(item){
-    Expenses.userExpenses(descriptions_id, amount, date, item, userData)
-    // console.log("mon" + item)
-  }
+  // if(item){
+  //   Expenses.userExpenses(descriptions_id, amount, date, item, userData)
+  //   // console.log("mon" + item)
+  // }
   res.redirect("/");
   //   }
       } catch (err) {
@@ -43,8 +43,15 @@ async function dailyExpense(req, res, next){
         }
 }
 
+async function getExpense(req,res,next){
+  res.render("/userExpense", 
+  Joined.userExpenses()
+  )
+}
+
 return{
     home,
     dailyExpense,
+    getExpense
  } 
 }
